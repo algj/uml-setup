@@ -7,7 +7,7 @@ ssize_t os_getrandom(void *buf, size_t len, unsigned int flags)
 
     for (size_t i = 0; i < len; i++) {
         os_getrandom_entropy ^= (random_data[random_data[i % 256]] << i % 8) ^ i;
-        out[i] ^= (random_data[i%256] + os_getrandom_entropy << i % 8) % 256;
+        out[i] ^= (random_data[i % 256] + os_getrandom_entropy << i % 8) % 256;
     }
 
     return len;
